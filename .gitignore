@@ -1,0 +1,16 @@
+### sbt specific 
+dist/*
+target/
+project/boot/
+project/plugins/
+project/target/
+.lib/
+.cache
+.history
+
+### scala specific
+*.class
+*.log
+
+### intellij specific
+.idea/
