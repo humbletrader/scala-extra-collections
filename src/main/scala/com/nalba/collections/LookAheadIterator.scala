@@ -8,16 +8,16 @@ class LookAheadIterator[+A](iter : Iterator[A]) extends AbstractIterator[A] {
   private val bufferedIter  : BufferedIterator[A] = iter.buffered
 
   override def hasNext: Boolean =
-    if(bufferedIter.hasNext){
-      try{
-          bufferedIter.head //evaluate the head and trigger potential exceptions
-          true
-      }catch{
-          case NonFatal(e) =>
-            println("caught exception ahead of time")
-            false
+    try{
+      if(bufferedIter.hasNext){
+            bufferedIter.head //evaluate the head and trigger potential exceptions
+            true
+      }else{
+          false
       }
-    }else{
+    }catch{
+      case NonFatal(e) =>
+        println("caught exception ahead of time")
         false
     }
 
